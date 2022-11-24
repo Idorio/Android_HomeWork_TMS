@@ -1,16 +1,37 @@
 package com.example.kotlinhomework1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import com.example.kotlinhomework1.MainActivity2.Companion.startMainActivity2
-import com.example.kotlinhomework1.MainActivity2.Companion.statrtMainActivitygo
+import android.widget.Button
+import android.widget.TextView
+import com.example.kotlinhomework1.MainActivity2.Companion.startMainActivityTextView
+import com.example.kotlinhomework1.MainActivity2.Companion.startMainActivityToolBar
+
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val car = CarEquipment
+            .setAwd(true)
+            .setHorsepower(280)
+            .setFuelType("Gasoline")
+            .setPassengerCapacity(2)
+            .equip()
+
+        val btnGoToActivity2 = findViewById<Button>(R.id.btnGoToActivity2)
+
+        btnGoToActivity2.setOnClickListener{
+            Log.w("Car Equipment", "${car.howMuchHorsePower()}, ${car.drive()}, ${car.whatFuelType()}, ${car.howMuchPassengers()}")
+            startActivity(
+                Intent(getString(R.string.open_act2_marker)))
+        }
 
 
     }
@@ -20,27 +41,22 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        when (item.itemId) {
-            R.id.setting -> startMainActivity2(
-                this,
-                getString(R.string.hello_world),
-                getString(R.string.hello_children)
+        val textView1 = findViewById<TextView>(R.id.textView1)
+        val textView2 = findViewById<TextView>(R.id.textView2)
+
+        when(item.itemId){
+            R.id.actionBar -> startMainActivityToolBar(this, "Second item clicked")
+            R.id.texView -> startMainActivityTextView(this,textView1.text.toString(),textView2.text.toString())
+            R.id.close -> finishAffinity()
+            R.id.goToActivity3 -> startActivity(Intent(this, MainActivity4::class.java)
             )
-            R.id.setting1 -> statrtMainActivitygo(
-                this,
-                getString(R.string.hello_children)
-            )
-            R.id.setting2 -> onBackPressedDispatcher
-            R.id.setting3 -> finishAffinity()
         }
         return super.onOptionsItemSelected(item)
     }
 
 }
-
 
 
 
