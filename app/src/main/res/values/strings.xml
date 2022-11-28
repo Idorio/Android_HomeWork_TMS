@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">KotlinHomeWork1</string>
+    <string name="app_name">HomeWork</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="registration">Registration</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="first_name">first name</string>
+    <string name="email">email</string>
+    <string name="password_registration">password registration</string>
+    <string name="signup">signup</string>
+    <string name="view_registration_text">view registration text</string>
+    <string name="main_screen">main_screen</string>
+    <string name="nested_fragment">nested_fragment</string>
+    <string name="back_to_login">back_to_login</string>
 </resources>
